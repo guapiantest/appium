@@ -1,0 +1,2 @@
+- element: //*[@resource-id="com.xueqiu.android:id/action_search"]
+  action: find and click

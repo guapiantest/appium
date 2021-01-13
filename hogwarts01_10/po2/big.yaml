@@ -1,0 +1,14 @@
+mainyaml:
+- element: //*[@resource-id='com.xueqiu.android:id/post_status']
+  action: find and click
+- element: //*[@resource-id='android:id/tabhost']//*[@text='行情']
+  action: find and click
+
+marketyaml:
+- element: //*[@resource-id="com.xueqiu.android:id/action_search"]
+  action: find and click
+
+searchyaml:
+- element: //*[@resource-id='com.xueqiu.android:id/search_input_text']
+  action: find and send
+  content: xxxx
