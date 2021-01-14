@@ -1,0 +1,4 @@
+[32mINFO    [0m root:black_handle.py:14 start find:(<hogwarts01_10.po2.main.MainPage object at 0x7fb621ba9278>, 'xpath', "//*[@resource-id='com.xueqiu.android:id/post_status']")kwargs:{}
+[32mINFO    [0m root:black_handle.py:14 start find:(<hogwarts01_10.po2.main.MainPage object at 0x7fb621ba9278>, 'xpath', "//*[@resource-id='android:id/tabhost']//*[@text='行情']")kwargs:{}
+[32mINFO    [0m root:black_handle.py:14 start find:(<hogwarts01_10.po2.Market_page.Market object at 0x7fb6239f3ef0>, 'xpath', '//*[@resource-id="com.xueqiu.android:id/action_search"]')kwargs:{}
+[32mINFO    [0m root:black_handle.py:14 start find:(<hogwarts01_10.po2.search_page.SearchPage object at 0x7fb6239f3c88>, 'xpath', "//*[@resource-id='com.xueqiu.android:id/search_input_text']")kwargs:{}

@@ -1,3 +1,5 @@
+import pytest
+
 from hogwarts01_10.app import App
 
 

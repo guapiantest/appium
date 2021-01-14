@@ -25,6 +25,7 @@ class BasePage:
 
     @black_wrapper
     def find(self, by, locator):
+        # self.driver.save_screenshot('tmp.png')
         return self.driver.find_element(by, locator)
 
     def finds(self, by, locator):
@@ -67,6 +68,8 @@ class BasePage:
                     print(page_yaml+"find_and_click执行成功")
                 elif action == "find and send":
                     content = step["content"]
-                    print(page_yaml,content)
                     self.find_and_send(By.XPATH, xpath_expr, content)
                     print(page_yaml + "find_and_send执行成功")
+
+    def screenshot(self,pic_path):
+        self.driver.save_screenshot(pic_path)
