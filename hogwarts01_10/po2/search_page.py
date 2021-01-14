@@ -1,10 +1,8 @@
-import yaml
-from selenium.webdriver.common.by import By
-from hogwarts01_10.base_page import BasePage
+from hogwarts01_10.po2.pre_page import PrePage
 
 
-class SearchPage(BasePage):
+class SearchPage(PrePage):
     def search(self):
         # self.load('../po2/search_page.yaml')
-        self.load2('../po2/big.yaml', 'searchyaml')
+        self.basepage.load2('../po2/big.yaml', 'searchyaml')
         return True

@@ -1,9 +1,10 @@
-import pytest
+from hogwarts01_10.base_page import BasePage
+from hogwarts01_10.po2.main import MainPage
 
-from hogwarts01_10.app import App
+class TestSearch:
+    def setup(self):
+        basepage = BasePage()
+        self.app = MainPage(basepage)
 
-
-def test_search():
-    app = App()
-    app.start()
-    app.goto_main().goto_market().goto_search().search()
+    def test_search(self):
+        self.app.goto_market().goto_search().search()

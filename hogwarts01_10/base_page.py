@@ -1,27 +1,25 @@
 import yaml
-from appium.webdriver import webdriver
+from appium import webdriver
 from appium.webdriver.common.mobileby import MobileBy
-from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.common.by import By
-
 from hogwarts01_10.testcase2.black_handle import black_wrapper
-
 """
 todo:封装自己的黑名单类
 解决基类无限膨胀，设计模式：代理模式，装饰器模式
 """
 
-
 class BasePage:
-    """接收driver，这样每继承一次基类，就会把上一页面的driver接收过来"""
-
-    def __init__(self, driver: WebDriver = None):
-        self.driver = driver
-        # 黑名单列表
+    def __init__(self):
+        caps = {}
+        caps["platformName"] = 'Android'
+        caps["deviceName"] = 'emulator-5554'
+        caps["appPackage"] = 'com.xueqiu.android'
+        caps["appActivity"] = '.common.MainActivity'
+        caps["noReset"] = 'true'  # 不初始化设备
+        # caps['settings[waitForIdleTimeout]'] = 0
+        self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", caps)
+        self.driver.implicitly_wait(10)
         self.black_list = [(By.XPATH, "//*[@resource-id='com.xueqiu.android:id/iv_close']")]
-
-    # 整体思路：捕获元素没找到的异常，然后去黑名单中去找能使弹窗关闭的元素，若找到，则进行点击，可以处理掉当前弹窗
-    # 相当于把能使弹窗关闭的元素放到黑名单
 
     @black_wrapper
     def find(self, by, locator):
