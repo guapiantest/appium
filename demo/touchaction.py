@@ -11,19 +11,22 @@ class TestUiauto():
         desired_caps['appPackage'] = 'com.xueqiu.android'
         '''以下三步，是为了处理首页弹窗'''
         desired_caps['noReset'] = 'true'
-        desired_caps['dontStopAppOnReset'] = 'true'
-        desired_caps['skipDeviceInitialization'] = 'true'
-        desired_caps['unicodeKeyBoard'] = 'true'
-        desired_caps['resetKeyBoard'] = 'true'
+        # desired_caps['dontStopAppOnReset'] = 'true'
+        # desired_caps['skipDeviceInitialization'] = 'true'
+        # desired_caps['unicodeKeyBoard'] = 'true'
+        # desired_caps['resetKeyBoard'] = 'true'
 
-        desired_caps['appActivity'] = 'com.xueqiu.android.common.MainActivity'
+        # desired_caps['appActivity'] = 'com.xueqiu.android.common.MainActivity'
+        desired_caps["appPackage"] = 'com.xueqiu.android'
+        desired_caps["appActivity"] = '.common.MainActivity'
+
         self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
         self.driver.implicitly_wait(6)
 
     def teardown(self):
         self.driver.quit()
 
-    def test_getvalue(self):
+    def getvalue(self):
         # 查找首页搜索框元素
         element = self.driver.find_element_by_id('com.xueqiu.android:id/home_search')
         print(element.text)
@@ -43,8 +46,13 @@ class TestUiauto():
     def test_touchaction(self):
         # 实例化TouchAction,需要传入参数driver
         from appium.webdriver.common.touch_action import TouchAction
+        width = self.driver.get_window_rect()['width']
+        height = self.driver.get_window_rect()['height']
         action = TouchAction(self.driver)
-        action.press(x=731, y=2083).wait(200).move_to(x=731, y=484).perform()
+        x1 = int(width * 1/2)
+        y_start = int(height * 4/5)
+        y_end = int(height * 1/5)
+        action.press(x=x1,y=y_start).wait(200).move_to(x=x1, y=y_end).release().perform()
 
 
 if __name__ == '__main__':
